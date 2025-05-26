@@ -1,3 +1,4 @@
+#[derive(Clone)]
 enum LinkedListNode {
     Nil,
     Node(i32, Box<LinkedListNode>),
@@ -21,6 +22,11 @@ impl LinkedListNode {
             Self::Node(_, tail) =>
                 tail.push_back(value),
         }
+    }
+
+    pub fn push_front(&mut self, value: i32){
+        *self = Self::Node(value,
+            Box::new(self.clone()));
     }
 }
 
