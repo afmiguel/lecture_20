@@ -13,12 +13,22 @@ impl LinkedListNode {
             }
         }
     }
+
+    pub fn push_back(&mut self, value: i32){
+        match self{
+            Self::Nil => *self = Self::Node(value,
+                Box::new(Self::Nil)),
+            Self::Node(_, tail) =>
+                tail.push_back(value),
+        }
+    }
 }
 
 fn main() {
-    let mut lista = 
-        LinkedListNode::Node(10, 
-            Box::new(LinkedListNode::Nil)
-        );
+    let mut lista = LinkedListNode::Nil;
+    lista.display_list();
+    lista.push_back(10);
+    lista.push_back(20);
+    lista.push_back(30);
     lista.display_list();
 }
