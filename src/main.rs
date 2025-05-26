@@ -37,4 +37,6 @@ fn main() {
     lista.push_back(20);
     lista.push_back(30);
     lista.display_list();
+    lista.push_front(5);
+    lista.display_list();
 }
